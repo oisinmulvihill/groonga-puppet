@@ -1,0 +1,2 @@
+deb http://packages.groonga.org/ubuntu/ precise universe
+deb-src http://packages.groonga.org/ubuntu/ precise universe
