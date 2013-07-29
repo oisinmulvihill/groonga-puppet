@@ -6,6 +6,19 @@ install docs for Ubuntu and Debian. I might have a change to get it working
 for CentOS as well. Currently is will just log a notice say anything other
 then Ubuntu/Debian is not supported.
 
+Usage
+-----
+
+The basic usage is simply to include of define the class:
+
+.. code-block:: puppet
+
+    include groonga
+
+    # Or if you later want to pass in options:
+
+    class { 'groonga': }
+
 
 License
 -------
