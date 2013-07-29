@@ -1,3 +1,7 @@
+#
+# Oisin Mulvihill
+# 2013-07-29
+#
 
 class groonga::install (
     $start_service = true,

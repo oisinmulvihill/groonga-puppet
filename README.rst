@@ -19,6 +19,15 @@ The basic usage is simply to include of define the class:
 
     class { 'groonga': }
 
+Currently there are two options you can change:
+
+.. code-block:: puppet
+
+    class { 'groonga':
+        $start_service = true | false,
+        $service_ensure = 'running' | 'stopped' | etc,
+    }
+
 
 License
 -------

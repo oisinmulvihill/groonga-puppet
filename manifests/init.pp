@@ -1,4 +1,7 @@
 #
+# Oisin Mulvihill
+# 2013-07-29
+#
 
 class groonga (
     $start_service = true,
