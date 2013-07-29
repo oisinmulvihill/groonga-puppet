@@ -10,6 +10,9 @@ not supported.
 
 Contributions are welcome!
 
+ * https://github.com/oisinmulvihill/groonga-puppet
+
+
 Usage
 -----
 
