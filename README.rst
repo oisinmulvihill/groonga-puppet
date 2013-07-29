@@ -2,9 +2,13 @@ groonga-puppet
 ==============
 
 A puppet module to install groonga following the instructions from their
-install docs for Ubuntu and Debian. I might have a change to get it working
-for CentOS as well. Currently is will just log a notice say anything other
-then Ubuntu/Debian is not supported.
+install docs.
+
+I've gotten this working on for Ubuntu/Debian. I might have a change to get it
+working for CentOS as well. Currently a notice will be logged if a platform is
+not supported.
+
+Contributions are welcome!
 
 Usage
 -----
@@ -27,6 +31,9 @@ Currently there are two options you can change:
         $start_service = true | false,
         $service_ensure = 'running' | 'stopped' | etc,
     }
+
+The gcs and gcs-console services are run by default. Changing start_service
+effects both services.
 
 
 License
