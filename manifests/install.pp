@@ -10,31 +10,48 @@ class groonga::install (
     $gcsconsole_name = 'gcs-console',
 ) {
 
-    if ($groonga::params::repo_setup) {
 
-        package {
-            'gcs': ensure => installed;
-            'gcs-console': ensure => installed;
+    case $operatingsystem {
+        /(?i)(centos|redhat)/: {
+            notice('Redhat/Centos Groonga install.')
+
+            # Centos set up:
+            #  http://groonga.org/docs/install/centos.html
+            #
+            package {
+                'groonga': ensure => installed;
+            }
+
         }
 
-        service { $gcs_name:
-            ensure => $service_ensure,
-            name => $gcs_name,
-            enable => $start_service,
-            require => Package['gcs'],
+        /(?i)(ubuntu|debian)/: {
+            notice('Ubuntu/Debian Groonga install.')
+
+            package {
+                'gcs': ensure => installed;
+                'gcs-console': ensure => installed;
+            }
+
+            service { $gcs_name:
+                ensure => $service_ensure,
+                name => $gcs_name,
+                enable => $start_service,
+                require => Package['gcs'],
+            }
+
+            service { $gcsconsole_name:
+                ensure => $service_ensure,
+                name => $gcsconsole_name,
+                enable => $start_service,
+                require => Package['gcs-console'],
+            }
+
+            Package['gcs', 'gcs-console'] ~> Service['gcs', 'gcs-console']
         }
 
-        service { $gcsconsole_name:
-            ensure => $service_ensure,
-            name => $gcsconsole_name,
-            enable => $start_service,
-            require => Package['gcs-console'],
+        default: {
+            fail("Unsupported OS '$operatingsystem'.")
         }
-
-        Package['gcs', 'gcs-console'] ~> Service['gcs', 'gcs-console']
-
-    } else {
-        notice("Nothing installed as package isn't supported on this platform.")
     }
 
 }
